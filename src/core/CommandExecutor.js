@@ -1,7 +1,4 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
-
-const execAsync = promisify(exec);
+import { spawnSync } from 'child_process';
 
 
 export class CommandExecutor {
@@ -10,13 +7,17 @@ export class CommandExecutor {
      * @param {string} command - El comando a ejecutar (ej. "git status")
      * @returns {Promise<{ stdout: string, stderr: string }>}
      */
-    static async run(command) {
-        try {
-            const { stdout, stderr } = await execAsync(command);
-            return { stdout, stderr };
-        } catch (error) {
-            return { stdout: '', stderr: error.message };
-        }
+    static run(command, args = []) {
+        const result = spawnSync(command, args, {
+            encoding: 'utf-8',
+            shell: true // permite usar comandos como git en Windows
+        });
+
+        return {
+            stdout: result.stdout,
+            stderr: result.stderr,
+            status: result.status
+        };
     }
 
 }
