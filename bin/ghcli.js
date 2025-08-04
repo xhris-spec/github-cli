@@ -2,7 +2,7 @@
 import { Command } from 'commander';
 import { helloCommand } from '../src/commands/hello.js';
 import { gitStatusCommand } from '../src/commands/gitstatus.js';
-
+import { listDirectoryCommand } from '../src/commands/dir.js';
 
 const program = new Command();
 
@@ -20,6 +20,12 @@ program
     .command('status')
     .description('Muestra el estado del repositorio git actual')
     .action(gitStatusCommand);
+
+
+program.
+    command('dir')
+    .description('Lista el contenido del directorio actual')
+    .action(listDirectoryCommand);
 
 program.parse();
 
