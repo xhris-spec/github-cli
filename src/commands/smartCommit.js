@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import path from 'path';
 import fs from 'fs/promises';
 import os from 'os';
+import inquirer from 'inquirer';
 
 export async function commitCommand() {
     try {
@@ -42,12 +43,55 @@ export async function commitCommand() {
 
         const fullMessage = messageLines.join('\n\n');
 
-        console.log(chalk.green('\n✅ Commit final:\n'));
-        console.log(fullMessage);
+        console.log(chalk.green('\n✅ Mensaje de commit generado:\n'));
+        console.log(chalk.cyan(fullMessage));
+
+        // Preguntar al usuario qué acción tomar
+        const { action } = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'action',
+                message: '¿Qué deseas hacer con este commit?',
+                choices: [
+                    {
+                        name: '✅ Realizar commit',
+                        value: 'commit'
+                    },
+                    {
+                        name: '✏️  Editar mensaje',
+                        value: 'edit'
+                    },
+                    {
+                        name: '❌ Cancelar',
+                        value: 'cancel'
+                    }
+                ],
+                default: 'commit'
+            }
+        ]);
+
+        if (action === 'cancel') {
+            console.log(chalk.yellow('\n❌ Commit cancelado.'));
+            return;
+        }
+
+        let finalMessage = fullMessage;
+
+        if (action === 'edit') {
+            const { customMessage } = await inquirer.prompt([
+                {
+                    type: 'editor',
+                    name: 'customMessage',
+                    message: 'Edita el mensaje de commit:',
+                    default: fullMessage
+                }
+            ]);
+            finalMessage = customMessage.trim();
+        }
 
         // Escribir mensaje a un archivo temporal
         const tempFilePath = path.join(os.tmpdir(), 'commit_message.txt');
-        await fs.writeFile(tempFilePath, fullMessage);
+        await fs.writeFile(tempFilePath, finalMessage);
 
         const { stderr } = await CommandExecutor.run('git', ['commit', '-F', tempFilePath]);
 
@@ -55,7 +99,7 @@ export async function commitCommand() {
         try {
             await fs.unlink(tempFilePath);
         } catch (unlinkError) {
-            // Ignorar errores al borrar el archivo temporal
+            console.error(chalk.red('❌ Error al eliminar el archivo temporal:'), unlinkError.message);
         }
 
         if (stderr) {
