@@ -11,7 +11,7 @@ const program = new Command();
 program
     .name('gh')
     .description('Cliente de github')
-    .version('0.0.1');
+    .version('0.5.0');
 
 program
     .command('hello')
