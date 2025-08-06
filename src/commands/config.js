@@ -2,6 +2,11 @@ import { Command } from 'commander';
 import { ConfigService } from '../core/ConfigService.js';
 import chalk from 'chalk';
 
+export const meta = {
+  name: "config set-key <apiKey>",
+  description: "Comandos de configuración para la API de OpenAI",
+};
+
 export function registerConfigCommand(program) {
     const config = new Command('config');
 

@@ -1,6 +1,11 @@
 import { CommandExecutor } from '../core/CommandExecutor.js';
 import chalk from 'chalk';
 
+export const meta = {
+  name: "status",
+  description: "Muestra el estado actual del repositorio Git",
+};
+
 export async function gitStatusCommand() {
     const { stdout, stderr } = await CommandExecutor.run('git status');
 

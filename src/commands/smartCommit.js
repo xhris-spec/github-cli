@@ -9,6 +9,10 @@ import fs from "fs/promises";
 import os from "os";
 import inquirer from "inquirer";
 
+export const meta = {
+  name: "oco",
+  description: "Crea un commit con ayuda de OpenAI",
+};
 
 export async function commitCommand() {
   try {

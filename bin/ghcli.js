@@ -6,6 +6,7 @@ import { listDirectoryCommand } from '../src/commands/dir.js';
 import { commitCommand } from '../src/commands/smartCommit.js';
 import { registerConfigCommand } from '../src/commands/config.js';
 import { gitCloneCommand } from '../src/commands/gitClone.js';
+import { helpCommand } from '../src/commands/help.js';
 
 const program = new Command();
 
@@ -38,6 +39,11 @@ program
     .command('oco')
     .description('Crea un commit con ayuda de OpenAI')
     .action(commitCommand);
+
+program
+    .command('help')
+    .description('Help de comandos')
+    .action(helpCommand);
 
 registerConfigCommand(program);
 

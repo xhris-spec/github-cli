@@ -3,7 +3,11 @@ import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
-// Para poder usar __dirname con ES Modules
+export const meta = {
+  name: "dir",
+  description: "Lista el contenido del directorio actual",
+};
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

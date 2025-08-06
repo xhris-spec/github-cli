@@ -1,6 +1,10 @@
 import { CommandExecutor } from '../core/CommandExecutor.js';
 import chalk from 'chalk';
 
+export const meta = {
+  name: "cl <url>",
+  description: "Clona un repositorio de Git",
+};
 
 export async function gitCloneCommand(url) {
     if (!url) {
