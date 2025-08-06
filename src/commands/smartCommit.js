@@ -136,9 +136,9 @@ export async function commitCommand() {
       );
     }
 
-    const { stderr: pushStderr } = await CommandExecutor.run("git", ["push"]);
+    const { stdout: pushStdout, stderr: pushStderr } = await CommandExecutor.run("git", ["push"]);
 
-    if (pushStderr) {
+    if (pushStderr && pushStderr.toLowerCase().includes("error")) {
       console.error(chalk.red("❌ Error al hacer push:"), pushStderr);
       return;
     }
