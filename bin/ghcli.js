@@ -12,7 +12,7 @@ const program = new Command();
 program
     .name('gh')
     .description('Cliente de github')
-    .version('0.6.0');
+    .version('0.7.1');
 
 program
     .command('hello')
