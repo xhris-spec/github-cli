@@ -1,6 +1,3 @@
----
-
-````markdown
 # 🧠 ghcli – GitHub CLI potenciado con IA
 
 `ghcli` es una herramienta de línea de comandos diseñada para facilitar el trabajo con Git y GitHub, incluyendo generación automática de mensajes de *commit* usando OpenAI, clonación de repositorios, visualización del estado del repositorio y más.
