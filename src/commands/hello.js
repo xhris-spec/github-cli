@@ -1,5 +1,10 @@
 import { CommandExecutor } from '../core/CommandExecutor.js';
 
+export const meta = {
+  name: "hello",
+  description: "Comando de prueba",
+};
+
 export async function helloCommand() {
     const { stdout, stderr } = await CommandExecutor.run('echo Hello from shell!');
 

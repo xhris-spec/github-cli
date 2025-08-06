@@ -1,7 +1,7 @@
 {
-  "name": "github-cli",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@xhris-carrasc/ghcli",
+  "version": "1.0.0-beta.1",
+  "description": "CLI de GitHub personalizado con IA",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/xhris-spec/github-cli.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cli",
+    "github",
+    "openai"
+  ],
+  "author": "xhris-carrasc",
+  "license": "MIT",
   "type": "module",
   "bugs": {
     "url": "https://github.com/xhris-spec/github-cli/issues"
