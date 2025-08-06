@@ -1,5 +1,6 @@
 import { CommandExecutor } from "../core/CommandExecutor.js";
 import { OpenAIService } from "../core/OpenAIService.js";
+import { ConfigService } from "../core/ConfigService.js";
 import { CommitTypeDetector } from "../core/CommitTypeDetector.js";
 import { StagingService } from "../services/StagingService.js"
 import chalk from "chalk";
@@ -16,10 +17,16 @@ export async function commitCommand() {
       "--cached",
       "--name-only",
     ]);
+
+    if (!ConfigService.hasApiKey()) {
+      console.log(chalk.red('❌ No se ha configurado la clave de OpenAI. Usa "gh config set-key <API_KEY>"'));
+      return;
+    }
+
     let fileList = fileOutput.split("\n").filter(Boolean);
 
     if (!fileList.length) {
-    const success = await StagingService.handleInteractiveStaging();
+      const success = await StagingService.handleInteractiveStaging();
       if (!success) return;
 
       const { stdout: newStaged } = await CommandExecutor.run("git", [
