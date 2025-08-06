@@ -1,5 +1,3 @@
-¡Claro! Aquí tienes un `README.md` profesional y estructurado para tu herramienta CLI de GitHub, incluyendo uso con IA, basado en lo que hemos ido construyendo:
-
 ---
 
 ````markdown
