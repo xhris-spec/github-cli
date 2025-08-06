@@ -132,10 +132,17 @@ export async function commitCommand() {
       );
     }
 
+    const { stderr: pushStderr } = await CommandExecutor.run("git push");
+
+    if (pushStderr) {
+      console.error(chalk.red("❌ Error al hacer push:"), pushStderr); 
+      return;
+    }
+
     if (stderr) {
       console.error(chalk.red("❌ Error al hacer commit:"), stderr);
     } else {
-      console.log(chalk.green("\n🎉 Commit generado exitosamente."));
+      console.log(chalk.green("\n🎉 Commit generado exitosamente y subido al repositorio."));
     }
   } catch (error) {
     console.error(chalk.red("❌ Error general:"), error.message);
