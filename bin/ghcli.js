@@ -5,6 +5,7 @@ import { gitStatusCommand } from '../src/commands/gitstatus.js';
 import { listDirectoryCommand } from '../src/commands/dir.js';
 import { commitCommand } from '../src/commands/smartCommit.js';
 import { registerConfigCommand } from '../src/commands/config.js';
+import { gitCloneCommand } from '../src/commands/gitClone.js';
 
 const program = new Command();
 
@@ -23,6 +24,10 @@ program
     .description('Muestra el estado del repositorio git actual')
     .action(gitStatusCommand);
 
+program
+    .command('cl <url>')
+    .description('Hace un clone de un repositorio git')
+    .action(gitCloneCommand);
 
 program.
     command('dir')
