@@ -2,7 +2,7 @@ import { CommandExecutor } from "../core/CommandExecutor.js";
 import { OpenAIService } from "../core/OpenAIService.js";
 import { ConfigService } from "../core/ConfigService.js";
 import { CommitTypeDetector } from "../core/CommitTypeDetector.js";
-import { StagingService } from "../services/StagingService.js"
+import { StagingService } from "../services/StagingService.js";
 import chalk from "chalk";
 import path from "path";
 import fs from "fs/promises";
@@ -23,7 +23,11 @@ export async function commitCommand() {
     ]);
 
     if (!ConfigService.hasApiKey()) {
-      console.log(chalk.red('❌ No se ha configurado la clave de OpenAI. Usa "gh config set-key <API_KEY>"'));
+      console.log(
+        chalk.red(
+          '❌ No se ha configurado la clave de OpenAI. Usa "gh config set-key <API_KEY>"'
+        )
+      );
       return;
     }
 
@@ -132,17 +136,21 @@ export async function commitCommand() {
       );
     }
 
-    const { stderr: pushStderr } = await CommandExecutor.run("git push");
+    const { stderr: pushStderr } = await CommandExecutor.run("git", ["push"]);
 
     if (pushStderr) {
-      console.error(chalk.red("❌ Error al hacer push:"), pushStderr); 
+      console.error(chalk.red("❌ Error al hacer push:"), pushStderr);
       return;
     }
 
     if (stderr) {
       console.error(chalk.red("❌ Error al hacer commit:"), stderr);
     } else {
-      console.log(chalk.green("\n🎉 Commit generado exitosamente y subido al repositorio."));
+      console.log(
+        chalk.green(
+          "\n🎉 Commit generado exitosamente y subido al repositorio."
+        )
+      );
     }
   } catch (error) {
     console.error(chalk.red("❌ Error general:"), error.message);
