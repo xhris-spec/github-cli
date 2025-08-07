@@ -28,14 +28,14 @@ gh help
 
 | Comando             | Descripción                                                              |
 | ------------------- | ------------------------------------------------------------------------ |
-| `gh help`           | Muestra todos los comandos disponibles.                                  |
-| `gh dir`            | Lista el contenido del directorio actual.                                |
-| `gh status`         | Muestra el estado del repositorio Git actual.                            |
-| `gh oco`            | Genera un commit inteligente usando la API de OpenAI.                    |
-| `gh clone-repos`    | Lista tus repos de GitHub y permite clonar los que quieras.              |
-| `gh config set-key` | Guarda tu clave de OpenAI para generación de commits.                    |
+| `gh cl <url>`    | Lista tus repos de GitHub y permite clonar los que quieras.              |
 | `gh config get-key` | Muestra la clave de OpenAI actual (enmascarada).                         |
+| `gh config set-key` | Guarda tu clave de OpenAI para generación de commits.                    |
+| `gh dir`            | Lista el contenido del directorio actual.                                |
+| `gh help`           | Muestra todos los comandos disponibles.                                  |
+| `gh oco`            | Genera y pushea un commit inteligente usando la API de OpenAI.           |
 | `gh stash`          | Permite aplicar `git stash` a archivos seleccionados antes de un commit. |
+| `gh status`         | Muestra el estado del repositorio Git actual.                            |
 
 ---
 
@@ -56,9 +56,9 @@ Este comando:
 * Genera un commit con todos los cambios, en un único commit con mensajes multilínea como este:
 
 ```
-💄 (AgNewsletterSection.vue): apply uppercase class to subtitle
-🔧 (contacto.json): update email addresses
-💄 (libro/[...slug].vue): adjust text size for responsiveness
+(AgNewsletterSection.vue): apply uppercase class to subtitle
+(contacto.json): update email addresses
+(libro/[...slug].vue): adjust text size for responsiveness
 ```
 
 > Nota: Debes configurar tu clave de OpenAI antes de usarlo.
@@ -76,18 +76,6 @@ Puedes verificar si está configurada con:
 ```bash
 gh config get-key
 ```
-
----
-
-## 📁 Clonar tus repos de GitHub
-
-```bash
-gh clone-repos
-```
-
-Este comando accede a tu cuenta de GitHub (requiere `GITHUB_TOKEN`) y te permite seleccionar cuáles repositorios clonar desde la línea de comandos.
-
----
 
 ## 🧪 Versión beta
 
@@ -119,11 +107,4 @@ npm unlink -g
 
 MIT © [@xhris-carrasc](https://github.com/xhris-carrasc)
 
-```
-
----
-
-### ¿Quieres que también lo genere en español completo o prefieres mantenerlo así, en estilo técnico internacional?
-
-También te puedo generar la versión en formato `docs/index.md` si estás pensando en una documentación completa.
 ```
