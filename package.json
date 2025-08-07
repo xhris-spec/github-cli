@@ -1,6 +1,6 @@
 {
   "name": "@xhris-carrasc/ghcli",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "description": "CLI de GitHub personalizado con IA",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/xhris-spec/github-cli#readme",
   "dependencies": {
+    "@xhris-carrasc/ghcli": "^1.0.0-beta.8",
     "axios": "^1.11.0",
     "chalk": "^5.5.0",
     "commander": "^14.0.0",
