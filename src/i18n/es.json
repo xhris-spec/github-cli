@@ -1,0 +1,11 @@
+{
+    "config": {
+        "noKey": "Debes proporcionar una clave de API.",
+        "apiKeySaved": "Clave guardada correctamente.",
+        "configuredKey": "Clave configurada:",
+        "invalidOption": "Comando inválido. Usa 'set-key' o 'get-key'."
+    },
+    "commands": {
+        "config": "Comandos de configuración para la API de OpenAI"
+    }
+}

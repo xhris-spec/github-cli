@@ -1,59 +1,59 @@
-# 🧠 ghcli – GitHub CLI potenciado con IA
+# 🧠 ghcli – GitHub CLI powered by AI
 
-`ghcli` es una herramienta de línea de comandos diseñada para facilitar el trabajo con Git y GitHub, incluyendo generación automática de mensajes de *commit* usando OpenAI, clonación de repositorios, visualización del estado del repositorio y más.
+`ghcli` is a command-line tool designed to simplify working with Git and GitHub, including automatic *commit* message generation using OpenAI, repository cloning, viewing repository status, and more.
 
-> 🚀 Pensado para desarrolladores que quieren automatizar tareas comunes con un toque de inteligencia.
+> 🚀 Built for developers who want to automate common tasks with a touch of intelligence.
 
 ---
 
-## 📦 Instalación
+## 📦 Installation
 
 ```bash
 npm install -g @xhris-carrasc/ghcli@beta
-````
+```
 
-> Asegúrate de tener [Node.js](https://nodejs.org/) instalado.
+> Make sure you have [Node.js](https://nodejs.org/) installed.
 
 ---
 
-## 🧰 Comandos disponibles
+## 🧰 Available Commands
 
-Puedes ver todos los comandos disponibles con:
+You can see all available commands with:
 
 ```bash
 gh help
 ```
 
-### 📘 Lista de comandos
+### 📘 Command List
 
-| Comando             | Descripción                                                              |
-| ------------------- | ------------------------------------------------------------------------ |
-| `gh cl <url>`    | Lista tus repos de GitHub y permite clonar los que quieras.              |
-| `gh config get-key` | Muestra la clave de OpenAI actual (enmascarada).                         |
-| `gh config set-key` | Guarda tu clave de OpenAI para generación de commits.                    |
-| `gh dir`            | Lista el contenido del directorio actual.                                |
-| `gh help`           | Muestra todos los comandos disponibles.                                  |
-| `gh oco`            | Genera y pushea un commit inteligente usando la API de OpenAI.           |
-| `gh stash`          | Permite aplicar `git stash` a archivos seleccionados antes de un commit. |
-| `gh status`         | Muestra el estado del repositorio Git actual.                            |
+| Command             | Description                                                        |
+| ------------------- | ------------------------------------------------------------------ |
+| `gh cl <url>`       | Lists your GitHub repos and lets you clone the ones you want.      |
+| `gh config get-key` | Displays the current OpenAI key (masked).                          |
+| `gh config set-key` | Saves your OpenAI key for commit generation.                       |
+| `gh dir`            | Lists the contents of the current directory.                       |
+| `gh help`           | Displays all available commands.                                   |
+| `gh oco`            | Generates and pushes a smart commit using the OpenAI API.          |
+| `gh stash`          | Allows you to apply `git stash` to selected files before a commit. |
+| `gh status`         | Shows the status of the current Git repository.                    |
 
 ---
 
-## 🤖 Commit inteligente con IA
+## 🤖 Smart Commit with AI
 
-Una de las funciones más potentes es la generación de mensajes de commit basados en los archivos modificados.
+One of the most powerful features is generating commit messages based on modified files.
 
-### 💡 Ejemplo:
+### 💡 Example:
 
 ```bash
 gh oco
 ```
 
-Este comando:
+This command:
 
-* Analiza los archivos en *staging* (`git add ...`)
-* Usa OpenAI para generar un mensaje claro y conciso por cada archivo
-* Genera un commit con todos los cambios, en un único commit con mensajes multilínea como este:
+* Analyzes the files in *staging* (`git add ...`)
+* Uses OpenAI to generate a clear and concise message per file
+* Creates a single commit with all the changes, including multi-line messages like:
 
 ```
 (AgNewsletterSection.vue): apply uppercase class to subtitle
@@ -61,50 +61,50 @@ Este comando:
 (libro/[...slug].vue): adjust text size for responsiveness
 ```
 
-> Nota: Debes configurar tu clave de OpenAI antes de usarlo.
+> Note: You must configure your OpenAI key before using it.
 
 ---
 
-## 🔐 Configurar clave de OpenAI
+## 🔐 Configure OpenAI Key
 
 ```bash
-gh config set-key <tu-api-key>
+gh config set-key <your-api-key>
 ```
 
-Puedes verificar si está configurada con:
+You can check if it's configured with:
 
 ```bash
 gh config get-key
 ```
 
-## 🧪 Versión beta
+---
 
-Esta herramienta está en desarrollo activo. Si quieres contribuir o reportar errores:
+## 🧪 Beta Version
 
-* [Repositorio GitHub](https://github.com/xhris-carrasc/ghcli) *(puedes ajustarlo si es privado o local)*
+This tool is under active development. If you'd like to contribute or report bugs:
+
+* [GitHub Repository](https://github.com/xhris-carrasc/ghcli) *(adjust if private or local)*
 * `npm info @xhris-carrasc/ghcli`
 
 ---
 
-## 🧪 Desarrollo local
+## 🧪 Local Development
 
-Si estás desarrollando y quieres probar localmente:
+If you're developing and want to test locally:
 
 ```bash
 npm link
 gh help
 ```
 
-Para deshacer el enlace:
+To undo the link:
 
 ```bash
 npm unlink -g
 ```
 
 ---
-
-## ⚖️ Licencia
+## ⚖️ License
 
 MIT © [@xhris-carrasc](https://github.com/xhris-carrasc)
 
-```
