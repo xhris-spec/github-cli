@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/xhris-spec/github-cli#readme",
   "dependencies": {
+    "@xhris-carrasc/ghcli": "^1.0.0-beta.6",
     "axios": "^1.11.0",
     "chalk": "^5.5.0",
     "commander": "^14.0.0",
