@@ -3,9 +3,16 @@
         "noKey": "Debes proporcionar una clave de API.",
         "apiKeySaved": "Clave guardada correctamente.",
         "configuredKey": "Clave configurada:",
-        "invalidOption": "Comando inválido. Usa 'set-key' o 'get-key'."
+        "invalidOption": "Comando inválido. Usa 'set-key' o 'get-key'.",
+        "configLangSet": "Idioma configurado correctamente a",
+        "currentLang": "El idioma actual es"
     },
     "commands": {
-        "config": "Comandos de configuración para la API de OpenAI"
+        "config": "Comandos de configuración para la API de OpenAI",
+        "dir": "Lista el contenido del directorio actual"
+    },
+    "dir": {
+        "title": "Contenido de",
+        "error": "Error al leer el directorio:"
     }
 }

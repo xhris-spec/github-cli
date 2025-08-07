@@ -1,11 +1,18 @@
 {
-    "config": {
-        "noKey": "You must provide an API key.",
-        "apiKeySaved": "API key saved successfully.",
-        "configuredKey": "Configured key:",
-        "invalidOption": "Invalid command. Use 'set-key' or 'get-key'."
-    },
-    "commands": {
-        "config": "Configuration commands for the OpenAI API"
-    }
+  "config": {
+    "noKey": "You must provide an API key.",
+    "apiKeySaved": "API key saved successfully.",
+    "configuredKey": "Configured key:",
+    "invalidOption": "Invalid command. Use 'set-key' or 'get-key'.",
+    "configLangSet": "Language successfully set to",
+    "currentLang": "Current language is"
+  },
+  "commands": {
+    "config": "Configuration commands for the OpenAI API",
+    "dir": "Lists the contents of the current directory"
+  },
+  "dir": {
+    "title": "Contents of",
+    "error": "Error reading the directory:"
+  }
 }
