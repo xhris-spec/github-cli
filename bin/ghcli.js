@@ -19,6 +19,8 @@ import {
 } from "../src/commands/gitClone.js";
 import { helpCommand, meta as helpMeta } from "../src/commands/help.js";
 import { configCommand, meta as configMeta } from "../src/commands/config.js";
+import { resetCommand, meta as resetMeta } from "../src/commands/reset.js";
+
 
 const program = new Command();
 
@@ -58,5 +60,10 @@ program
   .command(configMeta.name)
   .description(configMeta.description)
   .action(configCommand);
+
+program
+  .command(resetMeta.name)
+  .description(resetMeta.description)
+  .action(resetCommand);
 
 program.parse();
