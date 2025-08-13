@@ -2,6 +2,7 @@ import chalk from "chalk";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
+import { I18n } from "../i18n/index.js";
 
 export const meta = {
   name: "help",
@@ -12,7 +13,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export async function helpCommand() {
-  console.log(chalk.bold("\n📘 Ayuda - Comandos disponibles:\n"));
+  const t = I18n.t.bind(I18n);
+
+  console.log(chalk.bold("\n📘 " + t("help.helpText")));
 
   const commandsDir = path.resolve(__dirname);
   const files = fs
@@ -44,7 +47,7 @@ export async function helpCommand() {
     }
   }
 
-  console.log(chalk.bold("\nℹ️  Usa los comandos así:"));
+  console.log(chalk.bold("\nℹ️  " + t("help.commandExample")));
   console.log(chalk.green("  gh <comando>"));
   console.log();
 }

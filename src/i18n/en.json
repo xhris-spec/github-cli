@@ -9,10 +9,64 @@
   },
   "commands": {
     "config": "Configuration commands for the OpenAI API",
-    "dir": "Lists the contents of the current directory"
+    "dir": "Lists the contents of the current directory",
+    "oco": "Generates commit messages using OpenAI",
+    "gitClone": "Clones a Git repository",
+    "gitStatus": "Displays the current status of the Git repository",
+    "reset": "Resets the last commit"
   },
   "dir": {
     "title": "Contents of",
     "error": "Error reading the directory:"
+  },
+  "oco": {
+    "noApiKey": "OpenAI API key not configured. Use \"gh config set-key <API_KEY>\"",
+    "noStaged": "There are no staged files.",
+    "noChanges": "No changes detected in {file}. Skipping...",
+    "noMessages": "No commit messages were generated.",
+    "generated": "Commit message generated:",
+    "actionPrompt": "What do you want to do with this commit?",
+    "actions": {
+      "commit": "Make commit",
+      "edit": "Edit message",
+      "cancel": "Cancel"
+    },
+    "commitCancelled": "Commit cancelled.",
+    "editPrompt": "Edit the commit message:",
+    "tmpFileError": "Error deleting temporary file:",
+    "pushError": "Error pushing to repository:",
+    "commitError": "Error committing changes:",
+    "success": "Commit successfully created and pushed to the repository.",
+    "generalError": "General error:"
+  },
+  "staging": {
+    "noModified": "There are no modified files to add.",
+    "noStagedPrompt": "There are no staged files. What do you want to do?",
+    "actions": {
+      "addAll": "Add all modified files",
+      "selectFiles": "Select specific files",
+      "cancel": "Cancel"
+    },
+    "selectFilesPrompt": "Select the files to add to staging:",
+    "noFilesSelected": "No files were selected."
+  },
+  "gitClone": {
+    "noUrl": "Please provide the repository URL."
+  },
+  "gitStatus": {
+    "error": "Error running \"git status\":",
+    "success": "Current repository status:"
+  },
+  "reset": {
+    "resetting": "Resetting the last commit..."
+  },
+  "OpenAI": {
+    "system": "You are a concise and clear commit message generator for development projects.",
+    "user": "Generate a commit message for the following changes: ",
+    "error": "OpenAI API key not configured. Use 'gh config set-key <API_KEY>'"
+  },
+  "help": {
+    "helpText": "Help - Available commands:\n",
+    "commandExample": "Use commands like this:\n"
   }
 }

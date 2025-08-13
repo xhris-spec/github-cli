@@ -10,7 +10,7 @@ export class CommandExecutor {
     static run(command, args = []) {
         const result = spawnSync(command, args, {
             encoding: 'utf-8',
-            shell: true // permite usar comandos como git en Windows
+            // shell: true // permite usar comandos como git en Windows
         });
 
         return {

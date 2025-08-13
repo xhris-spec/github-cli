@@ -8,13 +8,17 @@ import path from "path";
 import fs from "fs/promises";
 import os from "os";
 import inquirer from "inquirer";
+import { I18n } from "../i18n/index.js";
+
 
 export const meta = {
   name: "oco",
-  description: "Crea un commit con ayuda de OpenAI",
+  description: I18n.t("commands.oco"),
 };
 
 export async function commitCommand() {
+  const t = I18n.t.bind(I18n);
+
   try {
     const { stdout: fileOutput } = await CommandExecutor.run("git", [
       "diff",
@@ -23,11 +27,7 @@ export async function commitCommand() {
     ]);
 
     if (!ConfigService.hasApiKey()) {
-      console.log(
-        chalk.red(
-          '❌ No se ha configurado la clave de OpenAI. Usa "gh config set-key <API_KEY>"'
-        )
-      );
+      console.log(chalk.red("❌" + t("oco.noApiKey")));
       return;
     }
 
@@ -45,7 +45,7 @@ export async function commitCommand() {
       fileList = newStaged.split("\n").filter(Boolean);
 
       if (!fileList.length) {
-        console.log(chalk.red("❌ Aún no hay archivos staged."));
+        console.log(chalk.red("❌ " + t("oco.noStaged")));
         return;
       }
     }
@@ -61,9 +61,7 @@ export async function commitCommand() {
       ]);
 
       if (!diffOutput.trim()) {
-        console.log(
-          chalk.gray(`⏭️  Sin cambios detectados en ${fileName}. Saltando...`)
-        );
+        console.log(chalk.gray("⏭️ " + t("oco.noChanges"), fileName));
         continue;
       }
 
@@ -76,7 +74,7 @@ export async function commitCommand() {
     }
 
     if (!messageLines.length) {
-      console.log(chalk.yellow("⚠️ No se generaron mensajes de commit."));
+      console.log(chalk.yellow("⚠️ " + t("oco.noMessages")));
       return;
     }
 
@@ -89,18 +87,18 @@ export async function commitCommand() {
       {
         type: "list",
         name: "action",
-        message: "¿Qué deseas hacer con este commit?",
+        message: t("oco.actionPrompt"),
         choices: [
-          { name: "✅ Realizar commit", value: "commit" },
-          { name: "✏️  Editar mensaje", value: "edit" },
-          { name: "❌ Cancelar", value: "cancel" },
+          { name: "✅ " + t("oco.actions.commit"), value: "commit" },
+          { name: "✏️ " + t("oco.actions.edit"), value: "edit" },
+          { name: "❌ " + t("oco.actions.cancel"), value: "cancel" },
         ],
         default: "commit",
       },
     ]);
 
     if (action === "cancel") {
-      console.log(chalk.yellow("\n❌ Commit cancelado."));
+      console.log(chalk.yellow("\n❌ " + t("oco.commitCancelled")));
       return;
     }
 
@@ -111,7 +109,7 @@ export async function commitCommand() {
         {
           type: "editor",
           name: "customMessage",
-          message: "Edita el mensaje de commit:",
+          message: t("oco.commitCancelled"),
           default: fullMessage,
         },
       ]);
@@ -131,7 +129,7 @@ export async function commitCommand() {
       await fs.unlink(tempFilePath);
     } catch (unlinkError) {
       console.error(
-        chalk.red("❌ Error al eliminar el archivo temporal:"),
+        chalk.red("❌ " + t("oco.tmpFileError")),
         unlinkError.message
       );
     }
@@ -139,20 +137,20 @@ export async function commitCommand() {
     const { stderr: pushStderr } = await CommandExecutor.run("git", ["push"]);
 
     if (pushStderr && pushStderr.toLowerCase().includes("error")) {
-      console.error(chalk.red("❌ Error al hacer push:"), pushStderr);
+      console.error(chalk.red("❌ " + t("oco.pushError")), pushStderr);
       return;
     }
 
     if (stderr) {
-      console.error(chalk.red("❌ Error al hacer commit:"), stderr);
+      console.error(chalk.red("❌ " + t("oco.commitError")), stderr);
     } else {
       console.log(
         chalk.green(
-          "\n🎉 Commit generado exitosamente y subido al repositorio."
+          "\n🎉 " + t("oco.success")
         )
       );
     }
   } catch (error) {
-    console.error(chalk.red("❌ Error general:"), error.message);
+    console.error(chalk.red("❌ " + t("oco.generalError")), error.message);
   }
 }

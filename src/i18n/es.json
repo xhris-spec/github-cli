@@ -1,18 +1,72 @@
 {
-    "config": {
-        "noKey": "Debes proporcionar una clave de API.",
-        "apiKeySaved": "Clave guardada correctamente.",
-        "configuredKey": "Clave configurada:",
-        "invalidOption": "Comando inválido. Usa 'set-key' o 'get-key'.",
-        "configLangSet": "Idioma configurado correctamente a",
-        "currentLang": "El idioma actual es"
+  "config": {
+    "noKey": "Debes proporcionar una clave de API.",
+    "apiKeySaved": "Clave guardada correctamente.",
+    "configuredKey": "Clave configurada:",
+    "invalidOption": "Comando inválido. Usa 'set-key' o 'get-key'.",
+    "configLangSet": "Idioma configurado correctamente a",
+    "currentLang": "El idioma actual es"
+  },
+  "commands": {
+    "config": "Comandos de configuración para la API de OpenAI",
+    "dir": "Lista el contenido del directorio actual",
+    "oco": "Genera mensajes de commit usando OpenAI",
+    "gitClone": "Clona un repositorio Git",
+    "gitStatus": "Muestra el estado actual del repositorio Git",
+    "reset": "Reinicia el último commit"
+  },
+  "dir": {
+    "title": "Contenido de",
+    "error": "Error al leer el directorio:"
+  },
+  "oco": {
+    "noApiKey": "No se ha configurado la clave de OpenAI. Usa \"gh config set-key <API_KEY>\"",
+    "noStaged": "Aún no hay archivos staged.",
+    "noChanges": "Sin cambios detectados en ${fileName}. Saltando...",
+    "noMessages": "No se generaron mensajes de commit.",
+    "generated": "Mensaje de commit generado:",
+    "actionPrompt": "¿Qué deseas hacer con este commit?",
+    "actions": {
+      "commit": "Realizar commit",
+      "edit": "Editar mensaje",
+      "cancel": "Cancelar"
     },
-    "commands": {
-        "config": "Comandos de configuración para la API de OpenAI",
-        "dir": "Lista el contenido del directorio actual"
+    "commitCancelled": "Commit cancelado.",
+    "editPrompt": "Edita el mensaje de commit:",
+    "tmpFileError": "Error al eliminar el archivo temporal:",
+    "pushError": "Error al hacer push:",
+    "commitError": "Error al hacer commit:",
+    "success": "Commit generado exitosamente y subido al repositorio.",
+    "generalError": "Error general:"
+  },
+  "staging": {
+    "noModified": "No hay archivos modificados para agregar.",
+    "noStagedPrompt": "No hay archivos staged. ¿Qué deseas hacer?",
+    "actions": {
+      "addAll": "Agregar todos los archivos modificados",
+      "selectFiles": "Seleccionar archivos específicos",
+      "cancel": "Cancelar"
     },
-    "dir": {
-        "title": "Contenido de",
-        "error": "Error al leer el directorio:"
-    }
+    "selectFilesPrompt": "Selecciona los archivos a agregar al staging:",
+    "noFilesSelected": "No se seleccionaron archivos."
+  },
+  "gitClone": {
+    "noUrl": "Por favor proporciona la URL del repositorio."
+  },
+  "gitStatus": {
+    "error": "Error al ejecutar \"git status\":",
+    "success": "Estado actual del repositorio:"
+  },
+  "reset": {
+    "resetting": "Reiniciando el último commit..."
+  },
+  "OpenAI": {
+    "system": "Eres un generador de mensajes de commit concisos y claros para proyectos de desarrollo.",
+    "user": "Genera un mensaje de commit para los siguientes cambios: ",
+    "error": "No se ha configurado la clave de OpenAI. Usa 'gh config set-key <API_KEY>'"
+  },
+  "help": {
+    "helpText": "Ayuda - Comandos disponibles:\n",
+    "commandExample": "Usa los comandos así:\n"
+  }
 }
